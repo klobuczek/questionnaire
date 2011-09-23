@@ -1,0 +1,43 @@
+cherish_maps:
+  basics:
+    city_of_birth:
+    city_of_growing_up:
+    date_of_birth:
+    anniversary:
+    shirt_size:
+    pants_size:
+    shoe_size:
+    boxers_or_briefs:
+      only: male
+  hobbies_interests_fun:
+    movies:
+    music:
+    bands:
+    tv_shows:
+    sport_to_play:
+    sport_to_watch:
+    sports_team:
+    hobbies:
+    book_or_author:
+    weekend:
+    afternoons:
+    low_cost_vacation:
+    pricier_vacation:
+  friends_and_family:
+    best_friends:
+    favorite_relatives:
+    least_favorite_relatives:
+  family_history_emotional_life:
+    best_childhood_experience:
+    worst_childhood_experience:
+    relationship_with_mother:
+    relationship_with_father:
+    growing_environment:
+    relationship_with_siblings:
+    social_class:
+    religion:
+  dreams_hopes_fears:
+    
+
+    
+    

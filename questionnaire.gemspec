@@ -7,11 +7,15 @@ Gem::Specification.new do |s|
   s.version     = Questionnaire::VERSION
   s.authors     = ["Leszek Kalwa"]
   s.email       = ["leszek.kalwa@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/klobuczek/questionnaire/"
   s.summary     = %q{Questionnaire}
   s.description = %q{Builds forms of questions based on yml questionnairies file}
 
   s.rubyforge_project = "questionnaire"
+  
+  s.add_dependency "simple_form"
+  
+  s.add_development_dependency "rspec"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
