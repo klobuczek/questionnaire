@@ -1,8 +1,10 @@
-require "questionnaire/version"
+puts "loaded #{__FILE__}"
+
 require "simple_form"
 
 module Questionnaire
-  autoload :Parser,       'core/parser'
-  autoload :FormHelper,   'core/form_helper'
-  autoload :Formatter,    'core/formatter' 
+  #TODO: investigate why autoload Parser, require ... didnt work
+  require   'core/parser'
+  require   'core/form_helper'
+  require   'core/formatter' 
 end

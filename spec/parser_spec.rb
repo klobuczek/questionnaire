@@ -17,8 +17,12 @@ describe Questionnaire::Parser do
       hash.should be_empty
     end    
 
-    it 'should throw exception if there are errors during load' do
-      pending
+    it 'should handle exception if file does not exist' do
+      Questionnaire::Parser.load_fields("no_existing", 'file.yml').should raise_error
+    end
+    
+    it 'should handle exception if file is not in valid yaml format' do
+      Questionnaire::Parser.load_fields("no_existing", 'bad_file.rb').should raise_error
     end
   end  
 end
