@@ -8,9 +8,9 @@ module Questionnaire
     class << self
       extend ActiveSupport::Memoizable
 
-      def load_fields(key, filename='questionnaires.yml')
+      def load(key, filename='questionnaires.yml')
         begin
-          hash = load_questionnaire(filename)
+          hash = load_file(filename)
           hash.has_key?(key.to_s) ? hash[key.to_s] : {}
         rescue Errno::ENOENT => e
           puts e.message
@@ -19,10 +19,10 @@ module Questionnaire
         end
       end
 
-      def load_questionnaire(filename)
+      def load_file(filename)
         YAML.load_file(File.join(Rails.root, 'config', filename))
       end
-      memoize :load_questionnaire
+      memoize :load_file
     end
   end
 end
