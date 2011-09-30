@@ -24,11 +24,7 @@ module Questionnaire
 
       # Simple fields without any additional options
       def simple_field(k, f, section)
-        f.input k.to_sym, attributes.merge!(input_html: input_html_options(k, section))
-      end
-
-      def input_html_options(k, section)
-        {name: [section, k].join("_")}
+        f.input [section, k].join("_").to_sym, attributes.merge!(label: k.humanize)
       end
 
       # grabs elements defined in gem initializer file, select getters, check if them are't nil,
