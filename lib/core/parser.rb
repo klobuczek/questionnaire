@@ -1,7 +1,3 @@
-puts "loaded #{__FILE__}"
-
-
-
 module Questionnaire
   class Parser
 

@@ -1,5 +1,3 @@
-puts "loaded #{__FILE__}"
-
 require "simple_form"
 
 module Questionnaire
