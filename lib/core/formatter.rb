@@ -19,10 +19,10 @@ module Questionnaire
 
       def create_form_body(f)
         @form = f
-        output = '' << content_tag(:h1, I18n.t(:"#{@key}.label"))
+        output = '' << content_tag(:h1, I18n.t(:"questionnaires.#{@key}.label"))
         @fields.keys.each do |section|
           next if @fields[section].nil?
-          output << content_tag(:h3, I18n.t(:"#{@key}.#{section}.label"))
+          output << content_tag(:h3, I18n.t(:"questionnaires.#{@key}.#{section}.label"))
           @fields[section].each_pair do |section_field, field_options|
              output << field_with_options(section_field, field_options, section)
           end
@@ -57,7 +57,7 @@ module Questionnaire
 
       def html_options(field, section)
         { required: false }.tap do |h|
-          h[:label] = I18n.t(:"#{@key}.#{section}.#{field}")
+          h[:label] = I18n.t(:"questionnaires.#{@key}.#{section}.#{field}")
           h[:input_html] = { value: @object.send(@key.to_sym).try(:[], field) }
          end
       end
