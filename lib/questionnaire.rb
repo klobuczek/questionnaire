@@ -9,7 +9,7 @@ module Questionnaire
 
   # define global options for fields as a module accessors here, consider using the same names as
   # simple_form does
-  mattr_accessor :default_element
+  mattr_accessor :default_element, :title_tag, :section_tag
 
   def self.setup
     yield self
