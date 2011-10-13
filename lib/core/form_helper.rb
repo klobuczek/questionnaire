@@ -8,6 +8,12 @@ module Questionnaire
         end
       end
     end
+
+    def questionnaire_fields questionnaire
+      Parser.load_fields(questionnaire).each do |section_name, section_body|
+        yield section_name, section_body
+      end
+    end
   end
 end
 
