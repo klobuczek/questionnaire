@@ -14,6 +14,10 @@ module Questionnaire
         yield section_name, section_body
       end
     end
+
+    def questionnaire_field_displayed? object, field_options
+      Formatter.displayed?(object, field_options)
+    end
   end
 end
 
