@@ -5,14 +5,8 @@ module Questionnaire
      # extend ActiveSupport::Memoizable
 
       def load_fields(key, filename='questionnaires.yml')
-        begin
-          hash = fetch_from_cache_or_file(filename)
-          hash.has_key?(key.to_s) ? hash[key.to_s] : {}
-        rescue Errno::ENOENT => e
-          puts e.message
-        rescue NoMethodError => e
-          puts 'File seems to be not in proper yml format'
-        end
+        hash = fetch_from_cache_or_file(filename)
+        hash.has_key?(key.to_s) ? hash[key.to_s] : {}
       end
 
       # Opens file with questionnaires and caches it in class instance variable
@@ -41,7 +35,7 @@ module Questionnaire
       end
 
       def hash_from_file
-        file = YAML.load_file(@path)
+        YAML.load_file(@path)
       end
     end
   end
