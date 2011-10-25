@@ -1,3 +1,7 @@
+require 'factory_girl'
+require 'simplecov'
+SimpleCov.start
+
 # for simple form
 module Rails
   def self.env

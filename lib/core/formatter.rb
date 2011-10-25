@@ -44,7 +44,6 @@ module Questionnaire
         {required: false}.tap do |h|
           h[:as] = options["as"].to_sym if options.is_a?(Hash) && options.has_key?("as")
           h[:label] = I18n.t(:"questionnaires.#{key}.#{section}.#{field}")
-          h[:input_html] = {value: object.send(key.to_sym).try(:[], field)}
         end
       end
     end

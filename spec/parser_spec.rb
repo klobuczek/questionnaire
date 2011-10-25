@@ -17,18 +17,19 @@ describe Questionnaire::Parser do
       hash.should be_empty
     end
 
-    it 'should handle exception if file does not exist' do
-      Questionnaire::Parser.load_fields("no_existing", 'file.yml').should raise_error
-    end
-
-    it 'should handle exception if file is not in valid yaml format' do
-      Questionnaire::Parser.load_fields("no_existing", 'bad_file.rb').should raise_error
-    end
-
-    it 'should cache questionnaires file' do
+    it "should cache questionnaires file if file didn't change" do
       Questionnaire::Parser.load_fields("cherish_maps")
       YAML.should_not_receive(:load_file)
       Questionnaire::Parser.load_fields("cherish_maps")
+    end
+    
+    it "should load questionnaires file if file has changed" do
+      Questionnaire::Parser.fetch_from_cache_or_file("questionnaires.yml")
+      f = File.open(File.join(Rails.root, 'config', "questionnaires.yml"), "a+")
+      f.write("\n")
+      f.close
+      YAML.should_receive(:load_file)
+      Questionnaire::Parser.fetch_from_cache_or_file("questionnaires.yml")
     end
   end
 end
