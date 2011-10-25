@@ -4,19 +4,31 @@ class User; end
 class FormBuilder; end
 
 describe Questionnaire::Formatter do
+  let(:questionnaire) { { "section_body" => { "city_of_birth" => nil, "city_of_growing_up" => nil } } }
+  let(:bad_questionnaire) { { "section_body" => nil } }
   let(:field_options) { { "only" => "male", "as" => "text" } }
   let(:user) { User.new }
   let(:builder) { FormBuilder.new }
 
   describe "#create form body" do
-    it "should return form body" do
-      pending
+    before do
+      builder.stub(:button)
     end
-  end 
+    
+    it "should return form body when input data is properly formatted" do
+      Questionnaire::Formatter.stub(:field_with_options).and_return("form output")
+      Questionnaire::Formatter.create_form_body(user, "some_key", questionnaire, builder).html_safe?.should be_true
+    end
+    
+    it "should not consist section field if section hasn't got body" do
+      Questionnaire::Formatter.should_not_receive(:field_with_options)
+      Questionnaire::Formatter.create_form_body(user, "some_key", bad_questionnaire, builder)
+    end
+  end  
   
   describe "#field_with_options" do
     it "should return proper options for field" do
-      Questionnaire::Formatter.stub(:displayed?)
+      Questionnaire::Formatter.stub(:displayed?).and_return(true)
       builder.should_receive(:input)
       Questionnaire::Formatter.field_with_options(builder, user, "key", "field",  "section_field", field_options)
     end
